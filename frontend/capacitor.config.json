@@ -1,5 +1,12 @@
 {
   "appId": "com.jgao.seniorguardian",
   "appName": "SeniorGuardian",
-  "webDir": "dist"
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "http",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
 }

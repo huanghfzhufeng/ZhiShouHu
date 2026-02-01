@@ -225,7 +225,10 @@ const App = () => {
             await loadRealtimeData();
         } catch (error) {
             console.error('Registration failed:', error);
-            setAuthError(error.response?.data?.detail?.includes('already registered') ? '该手机号已注册' : '注册失败，请稍后重试');
+            // 详细错误信息用于调试
+            const errMsg = error.response?.data?.detail || error.message || '网络错误';
+            const errStatus = error.response?.status || 'N/A';
+            setAuthError(`注册错误[${errStatus}]: ${errMsg}`);
             // Do NOT set isLoggedIn=true on error
         } finally {
             setAuthLoading(false);

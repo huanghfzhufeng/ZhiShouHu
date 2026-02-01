@@ -34,30 +34,13 @@ app = FastAPI(
 )
 
 # CORS configuration
-# For mobile apps (Capacitor/Android), we need to allow specific origins or use regex.
-# Wildcard "*" with allow_credentials=True is not allowed.
-# We will use allow_origin_regex to match localhost and the server IP.
-
-origins = [
-    "http://localhost",
-    "https://localhost",
-    "capacitor://localhost",
-    "http://localhost:5173",  # Local dev
-    "http://localhost:8100",  # Ionic/Capacitor dev
-]
-
-# Add Env var origins
-env_origins = os.getenv("CORS_ORIGINS", "")
-if env_origins:
-    origins.extend([o.strip() for o in env_origins.split(",") if o.strip()])
-
+# For mobile apps (Capacitor/Android), allow ALL origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[], # "allow_origins" must be empty if "allow_origin_regex" is used with "allow_credentials=True"
-    allow_credentials=True, 
+    allow_origins=["*"],
+    allow_credentials=False,  # Must be False when using wildcard
     allow_methods=["*"],
     allow_headers=["*"],
-    allow_origin_regex="https?://.*", # Allow http/https from anywhere
 )
 
 # Import and register routers
