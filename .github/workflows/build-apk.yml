@@ -35,20 +35,10 @@ jobs:
         working-directory: frontend
         run: npm ci
 
-      - name: Verify API_URL is configured
-        run: |
-          if [ -z "${{ secrets.API_URL }}" ]; then
-            echo "::error::API_URL secret is not configured! Please add it in GitHub Settings -> Secrets -> Actions"
-            exit 1
-          fi
-          echo "API_URL is configured (value hidden for security)"
-
       - name: Build frontend
         working-directory: frontend
-        env:
-          VITE_API_URL: ${{ secrets.API_URL }}
         run: |
-          echo "Building with API URL: ${VITE_API_URL:0:20}..." 
+          echo "Using API URL from .env file"
           npm run build
 
       - name: Sync Capacitor
