@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SeniorGuardian</string>
+    <string name="title_activity_main">SeniorGuardian</string>
+    <string name="package_name">com.jgao.seniorguardian</string>
+    <string name="custom_url_scheme">com.jgao.seniorguardian</string>
+</resources>

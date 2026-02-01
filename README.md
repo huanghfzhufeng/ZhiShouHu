@@ -154,9 +154,5 @@ docker-compose logs -f backend
 docker-compose logs -f frontend
 ```
 
-## 开发团队
-- 项目类型：大学生创新项目
-- 技术方向：多模态数据分析 + 智能预警系统
-
 ## 许可证
 MIT License
