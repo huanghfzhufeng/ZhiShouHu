@@ -34,25 +34,12 @@ app = FastAPI(
 )
 
 # CORS configuration
-# Read allowed origins from environment, with sensible defaults for development
-_cors_origins_env = os.getenv("CORS_ORIGINS", "")
-if _cors_origins_env:
-    # Production: use comma-separated list from environment
-    origins = [origin.strip() for origin in _cors_origins_env.split(",") if origin.strip()]
-else:
-    # Development defaults
-    origins = [
-        "http://localhost:5173",  # Vite dev server
-        "http://localhost:3000",
-        "http://localhost:80",
-        "http://localhost",
-        "http://frontend:80",
-    ]
-
+# For mobile apps (Capacitor/Android), we need to allow all origins
+# since the Origin header varies (capacitor://localhost, http://localhost, etc.)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,  # Must be False when using wildcard origins
     allow_methods=["*"],
     allow_headers=["*"],
 )
