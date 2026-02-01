@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-// Backend API Base URL - use relative path to go through nginx proxy
-// In production (Docker), nginx will proxy /api to backend:8000/api
-// In development, vite.config.js proxy will handle /api requests
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// Backend API Base URL
+// Hardcoded for APK to ensure it always points to the correct server
+const API_BASE_URL = 'http://1.15.122.48:8000/api';
 
 // Token management
 const TOKEN_KEY = 'guardian_token';

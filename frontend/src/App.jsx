@@ -324,7 +324,9 @@ const App = () => {
                                 </form>
                                 <div className="mt-4 text-center"><p className="text-xs text-slate-400 font-medium">登录即代表同意 <span className="text-teal-600 underline">服务条款</span></p></div>
                                 {/* 调试信息 - 可在发布时删除 */}
-                                <div className="mt-2 text-center"><p className="text-xs text-slate-300 font-mono">API: {API_URL_DEBUG}</p></div>
+                                <div className="mt-4 p-3 bg-yellow-100 border border-yellow-400 rounded-xl text-center">
+                                    <p className="text-sm text-yellow-800 font-bold">DEBUG API: {API_URL_DEBUG}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
