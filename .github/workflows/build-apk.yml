@@ -19,8 +19,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -33,12 +31,21 @@ jobs:
 
       - name: Install dependencies
         working-directory: frontend
-        run: npm ci
+        run: |
+          rm -rf node_modules
+          npm ci
+
+      - name: Verify API URL is hardcoded
+        working-directory: frontend
+        run: |
+          echo "=== Checking api.js ==="
+          head -10 src/services/api.js
+          echo "========================"
 
       - name: Build frontend
         working-directory: frontend
         run: |
-          echo "Using API URL from .env file"
+          rm -rf dist
           npm run build
 
       - name: Sync Capacitor
