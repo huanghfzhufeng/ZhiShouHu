@@ -203,7 +203,10 @@ const App = () => {
             await loadRealtimeData();
         } catch (error) {
             console.error('Login failed:', error);
-            setAuthError(error.response?.status === 401 ? '手机号或密码错误' : '登录失败，请稍后重试');
+            // 详细错误信息用于调试
+            const errMsg = error.response?.data?.detail || error.message || '网络错误';
+            const errStatus = error.response?.status || 'N/A';
+            setAuthError(`错误[${errStatus}]: ${errMsg}`);
             // Do NOT set isLoggedIn=true on error
         } finally {
             setAuthLoading(false);
