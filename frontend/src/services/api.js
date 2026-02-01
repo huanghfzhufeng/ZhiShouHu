@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Backend API Base URL
 // Hardcoded for APK to ensure it always points to the correct server
-const API_BASE_URL = 'http://1.15.122.48:8000/api';
+export const API_BASE_URL = 'http://1.15.122.48:8000/api';
 
 // Token management
 const TOKEN_KEY = 'guardian_token';

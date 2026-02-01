@@ -7,10 +7,10 @@ import Alerts from './pages/Alerts';
 import Profile from './pages/Profile';
 import HealthProfilePage from './pages/HealthProfilePage';
 import ReportModal from './components/ReportModal';
-import { authApi, healthApi, simulationApi, healthCheck, getStoredUser, contactsApi, setElderId, setAuthStateChangeCallback } from './services/api';
+import { authApi, healthApi, simulationApi, healthCheck, getStoredUser, contactsApi, setElderId, setAuthStateChangeCallback, API_BASE_URL } from './services/api';
 
-// Debug: Show API URL
-const API_URL_DEBUG = import.meta.env.VITE_API_URL || '/api (default)';
+// Debug: Show actual API URL from api.js
+const API_URL_DEBUG = API_BASE_URL;
 
 const DEFAULT_DATA = { status: 'safe', heartRate: 72, bloodPressure: '120/80', stepCount: 3500, location: '幸福社区公园', activity: '散步', riskLevel: '低', battery: 85, lastUpdate: '刚刚', message: '正在加载健康数据...' };
 
