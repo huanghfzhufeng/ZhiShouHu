@@ -330,8 +330,24 @@ const App = () => {
                                 </form>
                                 <div className="mt-4 text-center"><p className="text-xs text-slate-400 font-medium">登录即代表同意 <span className="text-teal-600 underline">服务条款</span></p></div>
                                 {/* 调试信息 - 可在发布时删除 */}
-                                <div className="mt-4 p-3 bg-yellow-100 border border-yellow-400 rounded-xl text-center">
-                                    <p className="text-sm text-yellow-800 font-bold">DEBUG API: {API_URL_DEBUG}</p>
+                                <div className="mt-4 p-3 bg-yellow-100 border border-yellow-400 rounded-xl">
+                                    <p className="text-sm text-yellow-800 font-bold text-center">DEBUG API: {API_URL_DEBUG}</p>
+                                    <button 
+                                        type="button"
+                                        onClick={async () => {
+                                            setAuthError('正在测试网络...');
+                                            try {
+                                                const response = await fetch(API_URL_DEBUG + '/health');
+                                                const data = await response.json();
+                                                setAuthError(`✅ 网络测试成功! 响应: ${JSON.stringify(data)}`);
+                                            } catch (err) {
+                                                setAuthError(`❌ 网络测试失败: ${err.name}: ${err.message}`);
+                                            }
+                                        }}
+                                        className="mt-2 w-full bg-yellow-600 text-white py-2 rounded-lg text-sm font-bold"
+                                    >
+                                        测试网络连接
+                                    </button>
                                 </div>
                             </div>
                         </div>
